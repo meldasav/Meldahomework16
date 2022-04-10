@@ -4,7 +4,7 @@ import java.util.*;
 
 public class Homework_16 {
     public static void main(String[] args) {
-
+        System.out.println(removeExtraSpaces("   I   am      learning     Java      "));
         System.out.println(countWords("     Java is fun       "));//TASK1
         System.out.println(countWords("Selenium is the most common UI automation tool.   "));//TASK1
         System.out.println(countWords(""));//TASK1
@@ -13,7 +13,7 @@ public class Homework_16 {
         System.out.println(countA("QA stands for Quality Assurance"));//TASK2
         System.out.println(countPos(new ArrayList<>(Arrays.asList(-45, 0, 0, 34, 5, 67))));//TASK3
         System.out.println(countPos(new ArrayList<>(Arrays.asList(-23, -4, 0, 2, 5, 90, 123))));//TASK3
-        System.out.println(removeExtraSpaces("   I   am      learning     Java      "));
+
         System.out.println(removeDuplicateNumbers(new ArrayList(Arrays.asList(10, 20, 35, 20, 35, 60, 70, 60))));//TAsk4
         System.out.println(removeDuplicateNumbers(new ArrayList(Arrays.asList(1, 2, 5, 2, 3))));//TAsk4
         System.out.println(removeDuplicateElements(new ArrayList<>(Arrays.asList("java", "C#", "ruby", "JAVA", "ruby", "C#", "C++"))));//TASK5
@@ -26,8 +26,9 @@ public class Homework_16 {
             return 0;
         int split = str.trim().split(" ").length;
         return split;
-    }
 
+    }
+    
     //TASK2
     public static int countA(String str) {
         if (str.isEmpty())
@@ -53,6 +54,15 @@ public class Homework_16 {
     }
     //TASK4
 
+    public static List<Integer> removeDuplicateNumbers(List<Integer> arr) {
+        int j = 0;
+        for (int i = 0; i < arr.size(); i++)
+            for (j = i + 1; j < arr.size(); j++)
+                if (arr.get(i).equals(arr.get(j)))
+                    arr.remove(j);
+        return arr;
+    }
+    //Second way
     public static ArrayList<Integer> removeDuplicateNumbers(ArrayList<Integer> numbers) {
         return new ArrayList<>(new HashSet<>(numbers));
     }
@@ -72,9 +82,21 @@ public class Homework_16 {
     }
 
     //TASK6
-    public static String removeExtraSpaces(String str) {
-        str = str.replaceAll(" +", " ");
-        return str;
+    public static List<String> removeExtraSpaces(String str) {
+        List<String> str1 = new LinkedList<>();
+        Iterator<String> iterator = str1.iterator();
+        while(iterator.hasNext()){
+            String element= iterator.next();
+            if(element.contains(" ")){
+                iterator.remove();
+            }
+    }
+        return str1;
+
+
+//    public static String removeExtraSpaces(String str) {
+//        str = str.replaceAll(" +", " ");
+//        return str;
     }
 
     //TASK7

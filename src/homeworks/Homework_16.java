@@ -26,21 +26,22 @@ public class Homework_16 {
         System.out.println("..............TASK7..............");
         System.out.println(Arrays.toString(add(new int[]{3, 0, 0, 7, 5, 10}, new int[]{6, 3, 2})));
         System.out.println("..............TASK8..............");
-      //  System.out.println(findClosestTo10(
+        System.out.println(findClosestTo10(new int[]{10, -13, 5, 70, 15, 57}));
+        //  System.out.println(findClosestTo10(
 
     }
 
     //TASK1
     public static int countWords(String str) {
-        if(str.isEmpty()){
+        if (str.isEmpty()) {
             return 0;
         }
         int countMultiWords = 0;
-        for (int i = 0; i < str.length()-1; i++) {
-            if (str.charAt(i)== ' ' && str.charAt(i+1)!=' ') countMultiWords++;
+        for (int i = 0; i < str.length() - 1; i++) {
+            if (str.charAt(i) == ' ' && str.charAt(i + 1) != ' ') countMultiWords++;
         }
-        return countMultiWords+1;
-    //second way
+        return countMultiWords + 1;
+        //second way
 //        int split = str.trim().split(" ").length;
 //        return split;
 
@@ -116,25 +117,24 @@ public class Homework_16 {
         return c;
     }
 
-    //TASK8
-    public static int[] findClosestTo10(int[] number) {
-        int near = number[0];
+//    //TASK8
 
-        int difference = Math.abs(number[0] - 10);
-        for (int j : number) {
-            if (Math.abs(j - 10) < difference) {
-                difference = Math.abs(j - 10);
-                near = j;
-            } else if (Math.abs(j - 10) == difference) {
-                if (near > j)
-                    near = j;
+    public static int findClosestTo10(int[] number) {
+        int num = 0;
+        int distance = Math.abs(number[0] - num);
+
+        for (int i = 0; i < number.length; i++) {
+            int distanceNew = Math.abs(number[i] - num);
+            if (distanceNew < distance) {
+                num = i;
+                distance = distanceNew;
             }
         }
-        return number;
-      }
-
+        return number[num];
     }
 
+
+}
 
 
 

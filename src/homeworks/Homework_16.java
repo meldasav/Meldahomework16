@@ -27,7 +27,7 @@ public class Homework_16 {
         System.out.println(Arrays.toString(add(new int[]{3, 0, 0, 7, 5, 10}, new int[]{6, 3, 2})));
         System.out.println("..............TASK8..............");
         System.out.println(findClosestTo10(new int[]{10, -13, 5, 70, 15, 57}));
-        //  System.out.println(findClosestTo10(
+        System.out.println("melda Homework");
 
     }
 

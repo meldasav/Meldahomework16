@@ -4,31 +4,48 @@ import java.util.*;
 
 public class Homework_16 {
     public static void main(String[] args) {
-        System.out.println(removeExtraSpaces("   I   am      learning     Java      "));
-        System.out.println(countWords("     Java is fun       "));//TASK1
+
+        System.out.println("..............TASK1..............");
+        System.out.println(countWords("Java is fun"));//TASK1
         System.out.println(countWords("Selenium is the most common UI automation tool.   "));//TASK1
         System.out.println(countWords(""));//TASK1
+        System.out.println("..............TASK2..............");
         System.out.println(countA("TechGlobal is a QA bootcamp"));//TASK2
         System.out.println(countA(""));//TASK2
         System.out.println(countA("QA stands for Quality Assurance"));//TASK2
+        System.out.println("..............TASK3..............");
         System.out.println(countPos(new ArrayList<>(Arrays.asList(-45, 0, 0, 34, 5, 67))));//TASK3
         System.out.println(countPos(new ArrayList<>(Arrays.asList(-23, -4, 0, 2, 5, 90, 123))));//TASK3
-
+        System.out.println("..............TASK4..............");
         System.out.println(removeDuplicateNumbers(new ArrayList(Arrays.asList(10, 20, 35, 20, 35, 60, 70, 60))));//TAsk4
         System.out.println(removeDuplicateNumbers(new ArrayList(Arrays.asList(1, 2, 5, 2, 3))));//TAsk4
+        System.out.println("..............TASK5..............");
         System.out.println(removeDuplicateElements(new ArrayList<>(Arrays.asList("java", "C#", "ruby", "JAVA", "ruby", "C#", "C++"))));//TASK5
-        System.out.println(Arrays.toString(add(new int[]{3, 0, 0, 7, 5, 10}, new int[]{6, 3, 2})));//TASK6
+        System.out.println("..............TASK6..............");
+        System.out.println(removeExtraSpaces("   I   am      learning     Java      "));
+        System.out.println("..............TASK7..............");
+        System.out.println(Arrays.toString(add(new int[]{3, 0, 0, 7, 5, 10}, new int[]{6, 3, 2})));
+        System.out.println("..............TASK8..............");
+      //  System.out.println(findClosestTo10(
+
     }
 
     //TASK1
     public static int countWords(String str) {
-        if (str.isEmpty())
+        if(str.isEmpty()){
             return 0;
-        int split = str.trim().split(" ").length;
-        return split;
+        }
+        int countMultiWords = 0;
+        for (int i = 0; i < str.length()-1; i++) {
+            if (str.charAt(i)== ' ' && str.charAt(i+1)!=' ') countMultiWords++;
+        }
+        return countMultiWords+1;
+    //second way
+//        int split = str.trim().split(" ").length;
+//        return split;
 
     }
-    
+
     //TASK2
     public static int countA(String str) {
         if (str.isEmpty())
@@ -62,10 +79,11 @@ public class Homework_16 {
                     arr.remove(j);
         return arr;
     }
+
     //Second way
-    public static ArrayList<Integer> removeDuplicateNumbers(ArrayList<Integer> numbers) {
-        return new ArrayList<>(new HashSet<>(numbers));
-    }
+//    public static ArrayList<Integer> removeDuplicateNumbers(ArrayList<Integer> numbers) {
+//        return new ArrayList<>(new HashSet<>(numbers));
+//    }
 
     //TASK5
     public static List<String> removeDuplicateElements(ArrayList<String> str) {
@@ -82,21 +100,10 @@ public class Homework_16 {
     }
 
     //TASK6
-    public static List<String> removeExtraSpaces(String str) {
-        List<String> str1 = new LinkedList<>();
-        Iterator<String> iterator = str1.iterator();
-        while(iterator.hasNext()){
-            String element= iterator.next();
-            if(element.contains(" ")){
-                iterator.remove();
-            }
-    }
-        return str1;
 
-
-//    public static String removeExtraSpaces(String str) {
-//        str = str.replaceAll(" +", " ");
-//        return str;
+    public static String removeExtraSpaces(String str) {
+        str = str.replaceAll(" +", " ");
+        return str;
     }
 
     //TASK7
@@ -108,13 +115,25 @@ public class Homework_16 {
         }
         return c;
     }
-}
-//       //TASK8
-//  //  public static int findClosestTo10(int[] number){
-//    }
-//}
 
+    //TASK8
+    public static int[] findClosestTo10(int[] number) {
+        int near = number[0];
+        
+        int difference = Math.abs(number[0] - 10);
+        for (int j : number) {
+            if (Math.abs(j - 10) < difference) {
+                difference = Math.abs(j - 10);
+                near = j;
+            } else if (Math.abs(j - 10) == difference) {
+                if (near > j)
+                    near = j;
+            }
+        }
+        return number;
+      }
 
+    }
 
 
 

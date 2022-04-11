@@ -119,7 +119,7 @@ public class Homework_16 {
     //TASK8
     public static int[] findClosestTo10(int[] number) {
         int near = number[0];
-        
+
         int difference = Math.abs(number[0] - 10);
         for (int j : number) {
             if (Math.abs(j - 10) < difference) {
